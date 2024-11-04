@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #bebebe;
+            
+        }
+
+
+        .content {
+            display: flex;
+            margin: 20px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container {
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        img {
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .thumbnail {
+            cursor: pointer;
+            margin: 0 5px;
+            width: 60px;
+            /* Tamanho das miniaturas */
+            height: 45px;
+            /* Tamanho das miniaturas */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .details {
+            flex-grow: 1;
+        }
+
+        .specifications,
+        .reviews {
+            margin-top: 20px;
+        }
+
+        .add-to-cart {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkorange;
+        }
+
+        a {
+            text-decoration: none;
+
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .header img {
+            width: 200px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .restaurant-name {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        .auth-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <img src="logo.jpg" alt="">
+        </div>
+        <div class="auth-links">
+            <a href="index.html">Página inicial</a>
+            <a href="login.html">Login</a>
+            <a href="cadastro.html">Cadastro</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="image-container">
+            <img id="imagem-principal" src="calçavinho.png" alt="calçavinho.png">
+            <div class="thumbnails">
+                <img class="thumbnail" data-imagem="calçavinho.png" src="calçavinho.png" alt="calçavinho.png">
+                <img class="thumbnail" data-imagem="calca2.webp" src="calca2.webp" alt="calca2.webp">
+                <img class="thumbnail" data-imagem="calca3.jpg" src="calca3.jpg" alt="calca3.jpg">
+
+            </div>
+        </div>
+        <div class="details">
+            <h2>Calça social vinho</h2>
+            <h3>Calça Social Vinho - Elegância e Conforto</h3>
+            <p>Apresentamos a nossa calça social vinho, a escolha perfeita para quem busca um toque de sofisticação no
+                guarda-roupa. Confeccionada em tecido de alta qualidade, ela proporciona um caimento impecável e
+                conforto durante todo o dia. A cor vinho adiciona um elemento de distinção, ideal para ocasiões formais
+                ou eventos especiais.
+                <br><br>
+                Com um design moderno e corte ajustado, essa calça valoriza a silhueta, garantindo um visual elegante.
+                Os detalhes discretos, como os bolsos laterais e o fecho com botão, tornam-na prática e funcional.
+                Combine-a com uma camisa social ou um blazer para um look que impressiona.
+                <br><br>
+                Disponível em diversas numerações, a calça social vinho é a adição perfeita para qualquer guarda-roupa,
+                oferecendo versatilidade e estilo em cada ocasião. Não perca a oportunidade de se destacar com essa peça
+                incrível!
+            </p>
+            <div class="add-to-cart">
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" value="1" min="1" style="width: 50px;">
+                <button><a href="carrinho.html">Adicionar ao Carrinho</a></button>
+                <h1>R$199,99</h1>
+            </div>
+
+            <div class="reviews">
+                <h3>Avaliações:</h3>
+                <p>Lucas M.: "Essa calça social vinho é tudo o que eu esperava! O ajuste é perfeito e o tecido é de alta
+                    qualidade. Usei para uma reunião de trabalho e recebi muitos elogios. Com certeza, vou comprar mais
+                    cores!"
+                    <br><br>
+                    Fernanda R.: "Estou apaixonada pela minha calça social vinho! Ela é super elegante e confortável,
+                    ideal para o dia a dia no escritório. O único ponto negativo é que eu gostaria que tivesse mais
+                    opções de comprimento. Recomendo!"
+                    <br><br>
+                    Carlos T.: "Comprei a calça social vinho para um evento e não me decepcionei. A cor é linda e
+                    combina com várias camisas. O caimento é excelente e ela não amassa facilmente. Com certeza, uma
+                    peça que vou usar muito!"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const imagemPrincipal = document.getElementById('imagem-principal');
+        const miniaturas = document.querySelectorAll('.thumbnail');
+
+        miniaturas.forEach(miniatura => {
+            miniatura.addEventListener('click', function () {
+                const novaImagem = this.getAttribute('data-imagem');
+                imagemPrincipal.src = novaImagem;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

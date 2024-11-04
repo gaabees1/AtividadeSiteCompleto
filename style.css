@@ -1,0 +1,128 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #bebebe;
+  
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 10px 20px;
+}
+
+.header img {
+  width: 200px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.auth-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.auth-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.auth-links button {
+  background-color: rgb(255, 208, 0);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.auth-links button:hover {
+  background-color: rgb(255, 185, 0);
+}
+
+.categoria-dropdown {
+  background-color: white;
+  padding: 10px 20px;
+  margin: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.categoria-dropdown select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.content-box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+.content-box2 {
+  background-color: rgb(31, 30, 30);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+}
+
+img {
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+p {
+  padding: 15px;
+}
+
+button {
+  background-color: rgb(255, 166, 0);
+  align-items: center;
+}
+
+button.rounded-button {
+  background-color: rgb(255, 166, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button.rounded-button:hover {
+  background-color: rgb(255, 166, 0);
+}
+
+
+.product-img {
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  border: 2px solid #000000; /* Cor da borda que representa a mercadoria */
+  border-radius: 10px; /* Borda arredondada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+  transform: scale(1.05); 
+}

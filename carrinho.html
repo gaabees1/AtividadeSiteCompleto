@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="carrinho.css">
+    <link rel="shortcut icon" href="perfil.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #bebebe;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .header img {
+            width: 200px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .auth-links {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .auth-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .carrinho {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: rgb(255, 208, 0);
+        }
+
+        img {
+            width: 100px;
+            height: auto;
+        }
+
+        .total-final {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        button {
+            background-color: rgb(255, 166, 0);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(255, 185, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="header">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo">
+            </div>
+            <div class="auth-links">
+                <a href="index.html">Página inicial</a>
+                <a href="login.html">Login</a>
+                <a href="cadastro.html">Cadastro</a>
+            </div>
+        </div>
+        
+        <section class="carrinho">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Nome do Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Total</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Produto 1 -->
+                    <tr>
+                        <td><img src="download-removebg-preview (1).png" alt=""></td>
+                        <td>Paletó Vinho</td>
+                        <td>
+                            <input type="number" value="1" min="1" class="quantidade">
+                        </td>
+                        <td class="preco-unitario">R$329,99</td>
+                        <td class="preco-total">R$329,99</td>
+                        <td>
+                            <button class="remover-produto">Remover</button>
+                        </td>
+                    </tr>
+
+                    <!-- Produto 2 -->
+                    <tr>
+                        <td><img src="calçavinho.png" alt="Calca"></td>
+                        <td>Calça social vinho</td>
+                        <td>
+                            <input type="number" value="2" min="1" class="quantidade">
+                        </td>
+                        <td class="preco-unitario">R$199,99</td>
+                        <td class="preco-total">R$399,98</td>
+                        <td>
+                            <button class="remover-produto">Remover</button>
+                        </td>
+                    </tr>
+
+                    <!-- Produto 2 -->
+                    <tr>
+                        <td><img src="sapato.png" alt="Sapato"></td>
+                        <td>Sapato social</td>
+                        <td>
+                            <input type="number" value="2" min="1" class="quantidade">
+                        </td>
+                        <td class="preco-unitario">R$249,99</td>
+                        <td class="preco-total">R$249,99</td>
+                        <td>
+                            <button class="remover-produto">Remover</button>
+                        </td>
+                    </tr>
+
+
+                    
+                </tbody>
+            </table>
+
+            <div class="total-final">
+                <h3>Total Final: <span id="total-final">R$ 110,00</span></h3>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Função para atualizar o total de cada linha
+        function updateRowTotal(row) {
+            const quantityInput = row.querySelector('.quantidade');
+            const unitPriceElement = row.querySelector('.preco-unitario');
+            const totalPriceElement = row.querySelector('.preco-total');
+
+            const quantity = parseInt(quantityInput.value);
+            const unitPrice = parseFloat(unitPriceElement.textContent.replace('R$', '').replace(',', '.'));
+            const totalPrice = quantity * unitPrice;
+
+            totalPriceElement.textContent = 'R$ ' + totalPrice.toFixed(2).replace('.', ',');
+            return totalPrice;
+        }
+
+        // Função para atualizar o total final
+        function updateTotalFinal() {
+            const rows = document.querySelectorAll('tbody tr');
+            let grandTotal = 0;
+
+            rows.forEach(row => {
+                const rowTotal = updateRowTotal(row);
+                grandTotal += rowTotal;
+            });
+
+            document.getElementById('total-final').textContent = 'R$ ' + grandTotal.toFixed(2).replace('.', ',');
+        }
+
+        // Função para remover item
+        function removeItem(event) {
+            const buttonClicked = event.target;
+            const row = buttonClicked.parentElement.parentElement;
+            row.remove(); // Remove a linha do carrinho
+            updateTotalFinal(); // Atualiza o total final
+        }
+
+        // Adiciona eventos para remover itens
+        document.querySelectorAll('.remover-produto').forEach(button => {
+            button.addEventListener('click', removeItem);
+        });
+
+        // Adiciona eventos para atualizar o total quando a quantidade muda
+        document.querySelectorAll('.quantidade').forEach(input => {
+            input.addEventListener('change', updateTotalFinal);
+        });
+
+        // Inicializa o total ao carregar a página
+        updateTotalFinal();
+    </script>
+</body>
+
+</html>
